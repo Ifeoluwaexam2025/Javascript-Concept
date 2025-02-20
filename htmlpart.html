@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Meteorites mass query tool</h1>
+        <p>Search meteorites with mass less or equal to <input type="text"><button onclick="search()">Search</button></p>
+        <ul id="result">
+
+        </ul>
+        <script src="meteoritesDataset.js"></script>
+        <script>
+            // Your code goes here
+            function search(){
+                let input= documment.querySelector('input');
+                let button= documment.querySelector('button');
+                let result=document.querySelector('#result');
+                let massInput = input.value;
+
+                let newerMeterites=getMeteoriteNamesWithLessorEqualMass(meteorites,100);
+                newerMeterites.forEach(element => {
+                    let list=document.createElement('li');
+                    list.textContent=element;
+                    result.appendChild(list);
+                })
+
+            }
+            
+            function getMeteoriteNamesWithLessorEqualMass(meteoriteData,mass){
+              const massResult=[];
+               for(let i=0; i<meteoriteData.length; i++){
+              if(meteoriteData[i].mass<= mass){
+              massResult.push(meteoriteData[i].name);
+            }
+            }
+            return massResult;}
+
+
+        </script>
+    </body>
+</html>
